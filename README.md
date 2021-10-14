@@ -13,7 +13,7 @@
 A work day scheduler in which you can save the text entered in the form.
 
 ## Screenshots
-![Screenshot of Sceduler](screenshot.png)
+![Screenshot of Sceduler](screenshot22.png)
 
 
 ## Usage

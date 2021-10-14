@@ -1,59 +1,27 @@
-var timeEl = $("#currentDay");
-var currentTime;
-clockUpdater();
-loadData();
-var clock = setInterval(clockUpdater, 1000)
+$(".saveBtn").on("click", function() {
+var text = $(this).siblings("textarea").val();
+var time =$(this).parent().attr("id");
+localStorage.setItem(time, text);
+});
+
+var today = moment();
+
+$("#textarea-9").val(localStorage.getItem(9));
+$("#textarea-10").val(localStorage.getItem(10));
+$("#textarea-11").val(localStorage.getItem(11));
+$("#textarea-12").val(localStorage.getItem(12));
+$("#textarea-13").val(localStorage.getItem(13));
+$("#textarea-14").val(localStorage.getItem(14));
+$("#textarea-15").val(localStorage.getItem(15));
+$("#textarea-16").val(localStorage.getItem(16));
+$("#textarea-17").val(localStorage.getItem(17));
+$("#textarea-18").val(localStorage.getItem(18));
+$("#textarea-19").val(localStorage.getItem(19));
+$("#textarea-20").val(localStorage.getItem(20));
+$("#textarea-21").val(localStorage.getItem(21));
 
 
-function clockUpdater(){
-    currentTime = moment();
-    timeEl.text(currentTime);
-    checkTimeBlock();
-}
-function checkTimeBlock(){
-    var currentHour = currentTime.hours();
-    var timeBlock = $(".time-block");
-    for(var i = 0; i < timeBlock.length; i++){
-        var block = timeBlock[i];
-        if(parseInt(block.id.split("-")[0]) < currentHour){
-            $(block).addClass("past");
-        }
-        else if(parseInt(block.id.split("-")[0]) === currentHour){
-            $(block).removeClass("past");
-            $(block).addClass("present");
-        }
-        else{
-            $(block).removeClass("past");
-            $(block).removeClass("present");
-            $(block).addClass("future");
-        }
-    }
-}
-$(".saveBtn").on("click", saveClick);
-function saveClick(event){
-    var text = $(event.target).siblings(".description").val();
-    var time = $(event.target).parent().attr("id");
 
-    if(text === "")
-        alert("Type text into the field to save it on the calendar")
-    else{
-        localStorage.setItem(time, text);
-        alert("Task has been saved");
-    }
+$("#today").text(today.format("MMM Do, YYYY"));
 
-}
-function loadData(){ 
-    $('#9 .description').val(localStorage.getItem('9'));
-    $('#10 .description').val(localStorage.getItem('10'));
-    $('#11 .description').val(localStorage.getItem('11'));
-    $('#12 .description').val(localStorage.getItem('12'));
-    $('#13 .description').val(localStorage.getItem('13'));
-    $('#14 .description').val(localStorage.getItem('14'));
-    $('#15 .description').val(localStorage.getItem('15'));
-    $('#16 .description').val(localStorage.getItem('16'));
-    $('#17 .description').val(localStorage.getItem('17'));
-    $('#18 .description').val(localStorage.getItem('18'));
-    $('#19 .description').val(localStorage.getItem('19'));
-    $('#20 .description').val(localStorage.getItem('20'));
-    $('#21 .description').val(localStorage.getItem('21'));
-}
+
